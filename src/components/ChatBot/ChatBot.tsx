@@ -5,6 +5,7 @@ import { Message, ChatBotProps } from './types';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 import { getBotResponse } from './botLogic';
+import styles from './ChatBot.module.css'; // Import CSS module
 
 const ChatBot: React.FC<ChatBotProps> = ({
   title = "ChatBot FUSO",
@@ -44,12 +45,13 @@ const ChatBot: React.FC<ChatBotProps> = ({
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue; // Store inputValue before clearing
     setInputValue('');
     setIsTyping(true);
 
     // Simular delay de respuesta del bot
     setTimeout(async () => {
-      const botResponse = await getBotResponse(inputValue);
+      const botResponse = await getBotResponse(currentInput); // Use stored input
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: botResponse,
@@ -59,7 +61,8 @@ const ChatBot: React.FC<ChatBotProps> = ({
 
       setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
-    }, 1000 + Math.random() * 2000);
+      inputRef.current?.focus(); // Refocus input after bot response
+    }, 1000 + Math.random() * 1000); // Reduced max delay
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -78,11 +81,12 @@ const ChatBot: React.FC<ChatBotProps> = ({
         timestamp: new Date()
       }
     ]);
+    inputRef.current?.focus();
   };
 
   const exportChat = () => {
     const chatData = {
-      title: 'Conversación ChatBot FUSO',
+      title: `Conversación ChatBot FUSO (${theme})`,
       date: new Date().toISOString(),
       messages: messages.map(msg => ({
         sender: msg.sender,
@@ -99,85 +103,98 @@ const ChatBot: React.FC<ChatBotProps> = ({
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
+    document.body.appendChild(linkElement); // Required for Firefox
     linkElement.click();
+    document.body.removeChild(linkElement); // Clean up
   };
 
+  useEffect(() => {
+    inputRef.current?.focus(); // Focus input on initial load
+  }, []);
+
   return (
-    <div className={`chatbot-container ${className} ${theme}`}>
+    <div className={`${styles.chatbotContainer} ${styles[theme]} ${className}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl mx-auto"
+        transition={{ duration: 0.3 }}
+        className={styles.chatWindow}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <Bot className="w-6 h-6" />
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <div className={styles.headerTitleGroup}>
+              <div className={styles.headerIconContainer}>
+                <Bot className={styles.headerIcon} aria-hidden="true" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg">{title}</h3>
-                <p className="text-blue-100 text-sm">En línea</p>
+                <h3 className={styles.titleText}>{title}</h3>
+                <p className={styles.statusText}>En línea</p>
               </div>
             </div>
-            <div className="flex space-x-2">
+            <div className={styles.headerActions}>
               <button
                 onClick={exportChat}
-                className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                className={styles.actionButton}
                 title="Exportar conversación"
+                aria-label="Exportar conversación"
               >
-                <Download className="w-5 h-5" />
+                <Download className={styles.actionIcon} aria-hidden="true" />
               </button>
               <button
                 onClick={clearChat}
-                className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                className={styles.actionButton}
                 title="Limpiar chat"
+                aria-label="Limpiar chat"
               >
-                <Trash2 className="w-5 h-5" />
+                <Trash2 className={styles.actionIcon} aria-hidden="true" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Messages Area */}
-        <div className="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50 scrollbar-hide">
-          <AnimatePresence>
-            {messages.map((message) => (
-              <MessageBubble key={message.id} message={message} />
-            ))}
-          </AnimatePresence>
-          
-          {isTyping && <TypingIndicator />}
+        <div className={styles.messagesArea} aria-live="polite" role="log" aria-atomic="false" aria-relevant="additions">
+          <div role="list"> {/* Added role="list" for a list of messages */}
+            <AnimatePresence initial={false}>
+              {messages.map((message) => (
+                <MessageBubble key={message.id} message={message} theme={theme} />
+              ))}
+            </AnimatePresence>
+          </div>
+          {isTyping && <TypingIndicator theme={theme} />}
           <div ref={messagesEndRef} />
         </div>
 
         {/* Input Area */}
-        <div className="p-4 bg-white border-t">
-          <div className="flex space-x-3">
-            <div className="flex-1 relative">
+        <div className={styles.inputArea}>
+          <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }} className={styles.inputRow}>
+            <div className={styles.inputWrapper}>
               <input
                 ref={inputRef}
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyPress={handleKeyPress} // Keep for Enter key press without Shift
                 placeholder={placeholder}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className={styles.textInput}
                 disabled={isTyping}
+                aria-label="Escribe tu mensaje"
+                autoComplete="off"
               />
             </div>
             <motion.button
+              type="submit" // Changed to type submit for form
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={handleSendMessage}
               disabled={!inputValue.trim() || isTyping}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center space-x-2"
+              className={styles.sendButton}
+              aria-label="Enviar mensaje"
             >
-              <Send className="w-5 h-5" />
-              <span className="hidden sm:inline">Enviar</span>
+              <Send className={styles.sendIcon} aria-hidden="true" />
+              <span className={styles.sendButtonText}>Enviar</span>
             </motion.button>
-          </div>
+          </form>
         </div>
       </motion.div>
     </div>

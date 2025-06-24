@@ -1,38 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Bot } from 'lucide-react';
+import styles from './ChatBot.module.css'; // Import CSS module
 
-const TypingIndicator: React.FC = () => {
+interface TypingIndicatorProps {
+  theme: 'light' | 'dark';
+}
+
+const TypingIndicator: React.FC<TypingIndicatorProps> = ({ theme }) => {
+  // The main animation for dots is now in ChatBot.module.css (typingAnimation)
+  // motion.div for the container is kept for initial appear animation.
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="flex justify-start mb-4"
+      exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
+      transition={{ duration: 0.3 }}
+      className={`${styles.messageBubbleContainer} ${styles.bot}`} // Use message bubble container styling for alignment
+      role="status" // More appropriate role for a status indicator
+      aria-live="assertive"
+      aria-label="Bot está escribiendo"
     >
-      <div className="flex items-end space-x-2">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center flex-shrink-0">
-          <Bot className="w-4 h-4" />
+      <div className={styles.messageContent}> {/* Mimic MessageBubble structure for alignment */}
+        <div
+          className={`${styles.avatar} ${styles.bot}`}
+          aria-hidden="true"
+        >
+          <Bot className={styles.avatarIcon} />
         </div>
-        
-        <div className="bg-white text-gray-800 shadow-md border px-4 py-3 rounded-2xl rounded-bl-sm">
-          <div className="flex space-x-1">
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity, delay: 0 }}
-              className="w-2 h-2 bg-gray-400 rounded-full"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-              className="w-2 h-2 bg-gray-400 rounded-full"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-              className="w-2 h-2 bg-gray-400 rounded-full"
-            />
+        <div className={`${styles.bubble} ${styles.bot}`}> {/* Mimic bubble for consistent look */}
+          <div className={styles.typingIndicator}> {/* Actual typing dots container */}
+            <div className={styles.typingDot} />
+            <div className={styles.typingDot} />
+            <div className={styles.typingDot} />
           </div>
+          <span className={styles.srOnly}>Bot está escribiendo...</span>
         </div>
       </div>
     </motion.div>

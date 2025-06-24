@@ -4,15 +4,30 @@
 
 @layer base {
   * {
+    /* If --border is defined in App.css or via Tailwind config, this can stay.
+       Otherwise, it might need adjustment if it was purely for the old chatbot. */
     @apply border-border;
   }
   
   body {
+    /* These rely on --background and --foreground, typically set in App.css or via Tailwind config. */
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Keep for general typography */
+    margin: 0; /* Ensure no default body margin */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* A more modern default font stack */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
+/*
+  The scrollbar-hide utility was used by the old ChatBot.tsx.
+  It's moved to ChatBot.module.css for the .messagesArea specifically.
+  If this utility is used elsewhere globally, it can remain.
+  Otherwise, it can be removed from here.
+  For now, I will comment it out, assuming it was specific to the chatbot's message area.
+*/
+/*
 @layer components {
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -23,3 +38,4 @@
     display: none;
   }
 }
+*/

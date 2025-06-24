@@ -1,22 +1,56 @@
+/*
+  App.css can be used for global styles if needed,
+  but chatbot specific styles have been moved to ChatBot.module.css.
+  Keeping :root variables if they are used elsewhere, or for shadcn/ui theming.
+  If these are *only* for the old chatbot styling, they can be removed.
+  For now, I'll assume they might be used by other parts of the app or a UI library.
+*/
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 0 0% 100%; /* Base background for the app */
+  --foreground: 222.2 84% 4.9%; /* Base text color */
+
+  /* Shadcn/UI or similar component library variables - keep if used */
   --muted: 210 40% 98%;
   --muted-foreground: 215.4 16.3% 46.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%; /* Default border color */
+  --input: 214.3 31.8% 91.4%; /* Default input border */
+  --primary: 222.2 47.4% 11.2%; /* Primary action color */
+  --primary-foreground: 210 40% 98%; /* Text on primary elements */
   --secondary: 210 40% 96%;
   --secondary-foreground: 222.2 47.4% 11.2%;
   --accent: 210 40% 96%;
   --accent-foreground: 222.2 47.4% 11.2%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+  --ring: 222.2 84% 4.9%; /* Focus ring color */
+  --radius: 0.5rem; /* Default border radius */
 }
+
+/* Example of how you might define dark theme variables if not using a class-based toggle from JS */
+/*
+:root.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 212.7 26.8% 83.9%;
+}
+*/

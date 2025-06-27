@@ -1,4 +1,4 @@
-// Exportaciones principales del ChatBot
+// Exportaciones principalles de la Mascota FUSOFT
 export { default as ChatBot } from './ChatBot';
 export { default as MessageBubble } from './MessageBubble';
 export { default as TypingIndicator } from './TypingIndicator';

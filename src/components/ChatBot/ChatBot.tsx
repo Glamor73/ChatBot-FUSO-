@@ -110,7 +110,7 @@ const ChatBot: React.FC<ChatBotProps> = ({
         className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl mx-auto"
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4">
+        <div className="bg-gradient-to-r from-blue-600 to-red-600 text-white p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -172,7 +172,7 @@ const ChatBot: React.FC<ChatBotProps> = ({
               whileTap={{ scale: 0.95 }}
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isTyping}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center space-x-2"
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-xl hover:from-blue-700 hover:to-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center space-x-2"
             >
               <Send className="w-5 h-5" />
               <span className="hidden sm:inline">Enviar</span>

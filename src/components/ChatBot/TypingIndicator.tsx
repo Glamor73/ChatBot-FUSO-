@@ -11,7 +11,7 @@ const TypingIndicator: React.FC = () => {
       className="flex justify-start mb-4"
     >
       <div className="flex items-end space-x-2">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-red-500 text-white flex items-center justify-center flex-shrink-0">
           <Bot className="w-4 h-4" />
         </div>
         

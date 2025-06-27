@@ -21,7 +21,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {/* Avatar */}
         <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
           isBot 
-            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white' 
+            ? 'bg-gradient-to-r from-blue-500 to-red-500 text-white' 
             : 'bg-gray-300 text-gray-600'
         }`}>
           {isBot ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
@@ -31,7 +31,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         <div className={`px-4 py-2 rounded-2xl ${
           isBot 
             ? 'bg-white text-gray-800 shadow-md border' 
-            : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+            : 'bg-gradient-to-r from-blue-600 to-red-600 text-white'
         } ${isBot ? 'rounded-bl-sm' : 'rounded-br-sm'}`}>
           <p className="text-sm leading-relaxed whitespace-pre-wrap">
             {message.text}

@@ -113,8 +113,12 @@ const ChatBot: React.FC<ChatBotProps> = ({
         <div className="bg-gradient-to-r from-blue-600 to-red-600 text-white p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <Bot className="w-6 h-6" />
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center p-1">
+                <img 
+                  src="/robot-logo.svg" 
+                  alt="ChatBot FUSO" 
+                  className="w-8 h-8"
+                />
               </div>
               <div>
                 <h3 className="font-semibold text-lg">{title}</h3>

@@ -165,7 +165,7 @@ const FloatingChatBot: React.FC<FloatingChatBotProps> = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleChat}
-            className={`${sizeConfig[size].bubble} rounded-full shadow-lg flex items-center justify-center text-white relative overflow-hidden group`}
+            className={`${sizeConfig[size].bubble} rounded-full shadow-lg flex items-center justify-center text-white relative overflow-hidden group p-2`}
             style={{
               background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
             }}
@@ -176,8 +176,12 @@ const FloatingChatBot: React.FC<FloatingChatBotProps> = ({
             <div className="absolute inset-0 rounded-full animate-pulse opacity-30" 
                  style={{ backgroundColor: secondaryColor }}></div>
             
-            {/* Icono */}
-            <MessageCircle className={`${size === 'small' ? 'w-6 h-6' : size === 'medium' ? 'w-7 h-7' : 'w-8 h-8'} relative z-10`} />
+            {/* Logo del robot */}
+            <img 
+              src="/robot-logo.svg" 
+              alt="ChatBot FUSO" 
+              className={`${size === 'small' ? 'w-8 h-8' : size === 'medium' ? 'w-10 h-10' : 'w-12 h-12'} relative z-10`}
+            />
             
             {/* Contador de mensajes no leídos */}
             {unreadCount > 0 && (
@@ -213,8 +217,12 @@ const FloatingChatBot: React.FC<FloatingChatBotProps> = ({
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                    <Bot className="w-5 h-5" />
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center p-1">
+                    <img 
+                      src="/robot-logo.svg" 
+                      alt="ChatBot FUSO" 
+                      className="w-6 h-6"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-sm">{title}</h3>

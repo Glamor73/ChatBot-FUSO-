@@ -21,10 +21,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {/* Avatar */}
         <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
           isBot 
-            ? 'bg-gradient-to-r from-blue-500 to-red-500 text-white' 
+            ? 'bg-gradient-to-r from-blue-500 to-red-500 text-white p-1' 
             : 'bg-gray-300 text-gray-600'
         }`}>
-          {isBot ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
+          {isBot ? (
+            <img 
+              src="/robot-logo.svg" 
+              alt="Bot" 
+              className="w-6 h-6"
+            />
+          ) : (
+            <User className="w-4 h-4" />
+          )}
         </div>
         
         {/* Message Bubble */}

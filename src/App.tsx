@@ -14,7 +14,14 @@ function App() {
       <nav className="bg-white shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-800">ChatBot FUSO</h1>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/robot-logo.svg" 
+                alt="ChatBot FUSO" 
+                className="w-10 h-10"
+              />
+              <h1 className="text-2xl font-bold text-gray-800">ChatBot FUSO</h1>
+            </div>
             <div className="flex space-x-4">
               <button
                 onClick={() => setCurrentView('normal')}
@@ -56,9 +63,16 @@ function App() {
         {currentView === 'normal' && (
           <>
             <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">
-                ChatBot FUSO - Versión Normal
-              </h2>
+              <div className="flex items-center justify-center space-x-4 mb-4">
+                <img 
+                  src="/robot-logo.svg" 
+                  alt="ChatBot FUSO" 
+                  className="w-16 h-16"
+                />
+                <h2 className="text-4xl font-bold text-gray-800">
+                  ChatBot FUSO - Versión Normal
+                </h2>
+              </div>
               <p className="text-gray-600">
                 Asistente virtual inteligente para tus proyectos
               </p>

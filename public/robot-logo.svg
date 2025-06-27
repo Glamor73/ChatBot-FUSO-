@@ -1,0 +1,39 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="robotGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="robotGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Antena -->
+  <circle cx="50" cy="8" r="4" fill="url(#robotGradient1)"/>
+  <rect x="48" y="8" width="4" height="12" rx="2" fill="url(#robotGradient1)"/>
+  
+  <!-- Cabeza principal -->
+  <path d="M20 25 Q20 20 25 20 L75 20 Q80 20 80 25 L80 65 Q80 70 75 70 L25 70 Q20 70 20 65 Z" 
+        fill="url(#robotGradient1)" stroke="white" stroke-width="2"/>
+  
+  <!-- Cara interior -->
+  <rect x="30" y="35" width="40" height="20" rx="8" fill="white"/>
+  
+  <!-- Ojos -->
+  <rect x="38" y="42" width="4" height="6" rx="2" fill="#dc2626"/>
+  <rect x="58" y="42" width="4" height="6" rx="2" fill="#7c3aed"/>
+  
+  <!-- Auriculares/Controles laterales -->
+  <circle cx="15" cy="45" r="8" fill="url(#robotGradient2)"/>
+  <circle cx="85" cy="45" r="8" fill="url(#robotGradient2)"/>
+  <circle cx="15" cy="45" r="4" fill="white"/>
+  <circle cx="85" cy="45" r="4" fill="white"/>
+  
+  <!-- Micrófono -->
+  <path d="M35 75 Q40 85 45 90 L48 88 Q42 80 40 75" 
+        fill="url(#robotGradient2)" stroke="url(#robotGradient2)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="48" cy="88" r="3" fill="url(#robotGradient2)"/>
+</svg>

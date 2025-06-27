@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Integración - ChatBot FUSO Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #3b82f6;
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .section li:last-child {
+            border-bottom: none;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .highlight h2 {
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Página de Ejemplo</h1>
+            <p>Esta es una página web de ejemplo que muestra cómo se integra el ChatBot FUSO Widget</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>🚀 Características del Widget</h2>
+                <ul>
+                    <li>✅ Integración súper fácil</li>
+                    <li>✅ Diseño responsive</li>
+                    <li>✅ Animaciones suaves</li>
+                    <li>✅ Contador de mensajes</li>
+                    <li>✅ Múltiples posiciones</li>
+                    <li>✅ Colores personalizables</li>
+                    <li>✅ Exportar conversaciones</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Casos de Uso</h2>
+                <ul>
+                    <li>🌐 Sitios web corporativos</li>
+                    <li>🛒 E-commerce</li>
+                    <li>📚 Plataformas educativas</li>
+                    <li>🏥 Servicios médicos</li>
+                    <li>💼 Aplicaciones SaaS</li>
+                    <li>📱 Landing pages</li>
+                    <li>🎨 Portfolios creativos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h2>¡Prueba el ChatBot!</h2>
+            <p>Haz clic en el botón flotante en la esquina inferior derecha para comenzar una conversación</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📋 Instrucciones de Instalación</h2>
+                <ol>
+                    <li>Copia el código de integración</li>
+                    <li>Pégalo antes del cierre de &lt;/body&gt;</li>
+                    <li>Personaliza la configuración</li>
+                    <li>¡Listo! El widget aparecerá automáticamente</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Configuración Personalizable</h2>
+                <ul>
+                    <li><strong>Posición:</strong> 4 esquinas disponibles</li>
+                    <li><strong>Tamaño:</strong> Pequeño, mediano, grande</li>
+                    <li><strong>Colores:</strong> Totalmente personalizable</li>
+                    <li><strong>Título:</strong> Personaliza el nombre</li>
+                    <li><strong>Placeholder:</strong> Mensaje del input</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- AQUÍ EMPIEZA LA INTEGRACIÓN DEL WIDGET -->
+    <div id="chatbot-fuso-widget"></div>
+    <script>
+        // Configuración del widget
+        window.ChatBotFUSOConfig = {
+            title: "Asistente FUSO",
+            placeholder: "¿En qué puedo ayudarte?",
+            position: "bottom-right",
+            size: "medium",
+            primaryColor: "#667eea",
+            secondaryColor: "#764ba2",
+            theme: "light"
+        };
+
+        // Simulación de carga del widget (en producción esto cargaría desde tu servidor)
+        console.log("Widget ChatBot FUSO configurado:", window.ChatBotFUSOConfig);
+        
+        // Aquí normalmente cargarías el script real:
+        // var script = document.createElement('script');
+        // script.src = 'https://tu-dominio.com/chatbot-fuso-widget.js';
+        // script.async = true;
+        // document.head.appendChild(script);
+    </script>
+</body>
+</html>

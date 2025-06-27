@@ -75,10 +75,18 @@ export const getBotResponse = async (userMessage: string): Promise<string> => {
   if (message.includes('nombre')) {
     return "Soy ChatBot FUSO, tu asistente virtual inteligente. ¿En qué puedo ayudarte?";
   }
+  if (message.includes('edad')) {
+    return "No tengo una edad específica, pero fui creado para ayudarte con tus consultas. ¿Hay algo más que te gustaría saber?";
+  }
+   if (message.includes('cesar')) {
+    return "Es un muy buen profesor, siempre dispuesto a ayudar y compartir su conocimiento. ¿Te gustaría saber algo más sobre él?, mentiras siempre esta puto, pero es un buen profesor.";
+  }
   
   if (message.includes('clima') || message.includes('tiempo meteorológico')) {
     return "No tengo acceso a información meteorológica en tiempo real, pero te recomiendo consultar un servicio de clima confiable. ¿Hay algo más en lo que pueda ayudarte?";
   }
+
+
   
   // Respuesta por defecto
   return getRandomResponse(responses.default);

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User, Trash2, Download } from 'lucide-react';
+import { Send, Trash2, Download } from 'lucide-react';
 import { Message, ChatBotProps } from './types';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';

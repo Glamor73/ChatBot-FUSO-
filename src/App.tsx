@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ChatBot from './components/ChatBot/ChatBot';
-import FloatingChatBot from './components/ChatBot/FloatingChatBot';
 import WidgetDemo from './components/ChatBot/WidgetDemo';
 import EmbedScript from './components/ChatBot/EmbedScript';
 import './App.css';

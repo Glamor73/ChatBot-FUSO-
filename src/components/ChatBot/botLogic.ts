@@ -79,7 +79,7 @@ export const getBotResponse = async (userMessage: string): Promise<string> => {
     return "No tengo una edad específica, pero fui creado para ayudarte con tus consultas. ¿Hay algo más que te gustaría saber?";
   }
    if (message.includes('cesar')) {
-    return "Es un muy buen profesor, siempre dispuesto a ayudar y compartir su conocimiento. ¿Te gustaría saber algo más sobre él?, mentiras siempre esta puto, pero es un buen profesor.";
+    return "Es un muy buen profesor, siempre dispuesto a ayudar y compartir su conocimiento. ¿Te gustaría saber algo más sobre él?, mentiras siempre esta enojado, pero es un buen profesor.";
   }
   
   if (message.includes('clima') || message.includes('tiempo meteorológico')) {
